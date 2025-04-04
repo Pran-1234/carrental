@@ -84,3 +84,13 @@ class Booking(models.Model):
 
 
 
+def save(self, *args, **kwargs):
+        # Calculate total days and amount
+        if self.start_date and self.end_date:
+            self.total_days = (self.end_date - self.start_date).days
+            self.total_amount = self.total_days * self.car.cprice
+        super().save(*args, **kwargs)
+        
+        
+def __str__(self):
+         return f"Booking #{self.id} - {self.car.cname}"
