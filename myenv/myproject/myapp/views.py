@@ -644,3 +644,11 @@ def uprofilelessor(request):
 
     return render(request, 'uprofilelessor.html', {'user': user})
 
+
+def pricing(request):
+    """Render the pricing page."""
+    cars = Car.objects.all()  # Fetch all cars for pricing
+    context = {
+        'car': cars,
+    }
+    return render(request, 'pricing.html', context)
